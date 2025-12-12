@@ -1,31 +1,30 @@
-# CORREÇÃO 1: Usar Node 20 (Obrigatório para Next.js 15)
+# CORREÇÃO CRÍTICA: Mudamos de 18 para 20-alpine
 FROM node:20-alpine
 
 WORKDIR /app
 
-# Copia os arquivos de dependência
+# Copia dependências
 COPY package*.json ./
 
-# Instala as dependências usando NPM
+# Instala dependências
 RUN npm install
 
-# Copia o resto do código
+# Copia o código
 COPY . .
 
-# --- VARIÁVEIS DE AMBIENTE (Build Time) ---
-# Apenas as essenciais do Supabase
+# --- VARIÁVEIS DE AMBIENTE ---
+# Removemos a API_URL que não estava sendo usada
 ARG NEXT_PUBLIC_SUPABASE_URL
 ARG NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 ENV NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL
 ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY
-# ------------------------------------------
+# -----------------------------
 
 # Build do Next.js
 RUN npm run build
 
-# CORREÇÃO 2: Voltar para a porta padrão 3000
-# O Easypanel mapeia isso automaticamente para a web (80/443)
+# Porta padrão do Next.js (O Easypanel precisa que seja essa)
 EXPOSE 3000
 
 # Inicia o servidor
