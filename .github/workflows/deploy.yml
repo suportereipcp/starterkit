@@ -34,5 +34,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Webhook Easypanel
-        # O link do webhook deve estar cadastrado nos Secrets do GitHub
+        # O link do webhook deve estar cadastrado nos Secrets do GitHub:
         run: curl -X POST "${{ secrets.EASYPANEL_WEBHOOK_URL }}"
