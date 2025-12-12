@@ -24,7 +24,7 @@ jobs:
           push: true
           # IMPORTANTE: Mude o nome do repositório abaixo para cada projeto novo
           tags: suportereipcp/starterkit:latest
-          # Injeção de variáveis de ambiente no build:
+          # Injeção de variáveis de ambiente no build
           build-args: |
             NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
             NEXT_PUBLIC_SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
