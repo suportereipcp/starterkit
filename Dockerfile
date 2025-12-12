@@ -2,14 +2,14 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Ativa PNPM
-RUN corepack enable && corepack prepare pnpm@latest --activate
+# Copia os arquivos de dependência (package.json e package-lock.json)
+# O asterisco * garante que copie o lockfile se ele existir
+COPY package*.json ./
 
-# Instala dependências
-COPY package.json pnpm-lock.yaml* ./
-RUN pnpm install
+# Instala as dependências usando NPM
+RUN npm install
 
-# Copia código fonte
+# Copia o resto do código
 COPY . .
 
 # --- VARIÁVEIS DE AMBIENTE (Build Time) ---
@@ -22,8 +22,10 @@ ENV NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL
 ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY
 # ------------------------------------------
 
-# Build
-RUN pnpm run build
+# Build do Next.js
+RUN npm run build
 
-EXPOSE 3000
-CMD ["pnpm", "start"]
+EXPOSE 5800
+
+# Inicia o servidor com NPM
+CMD ["npm", "start"]
