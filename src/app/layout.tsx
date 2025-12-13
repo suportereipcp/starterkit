@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google"; // Import Inter
+import { Outfit } from "next/font/google"; // Import Outfit
 import "./globals.css";
 
-// Configure Inter font
-const inter = Inter({
+// Configure Outfit font
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-inter',
+  weight: ['400'], // User requested 400
+  variable: '--font-outfit',
   display: 'swap',
 });
 
@@ -22,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} font-sans antialiased`}
+        className={`${outfit.variable} font-sans antialiased`}
       >
         {children}
       </body>
