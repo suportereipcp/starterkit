@@ -3,10 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase"; // Importa nossa conexão real
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Logo } from "@/components/brand/Logo";
 
 export default function LoginPage() {
@@ -28,70 +24,94 @@ export default function LoginPage() {
         });
 
         if (error) {
-            setError(error.message); // Exibe erro real (ex: "Senha incorreta")
+            setError(error.message);
             setLoading(false);
         } else {
-            // Sucesso: Redireciona e atualiza a sessão
             router.push('/');
             router.refresh();
         }
     }
 
     return (
-        <div className="flex min-h-screen w-full items-center justify-center bg-muted/50 p-4">
-            <div className="w-full max-w-md space-y-6">
-                <div className="flex justify-center">
-                    {/* Se o componente Logo ainda não existir, isso vai dar erro. 
-                        Se der erro, troque <Logo /> por <span>PCP Suporte Rei</span> provisoriamente */}
-                    <Logo className="h-12 w-12" />
+        <div className="min-h-screen bg-grey-lighter font-sans text-grey-darkest antialiased relative">
+            {/* Top Colored Bar */}
+            <div className="h-2 bg-primary w-full absolute top-0 left-0"></div>
+
+            <div className="container mx-auto p-8 flex flex-col items-center justify-center min-h-screen">
+                {/* Logo Section */}
+                <div className="mb-8" style={{ maxWidth: '12rem' }}>
+                    <Logo />
                 </div>
 
-                <Card className="w-full shadow-lg">
-                    <CardHeader className="space-y-1 text-center">
-                        <CardTitle className="text-2xl font-bold">Acesso ao Sistema</CardTitle>
-                        <CardDescription>Entre com suas credenciais PCP</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        {/* Note que mudamos de onSubmit para action={handleLogin} */}
-                        <form action={handleLogin} className="space-y-4">
-                            <div className="space-y-2">
-                                <Label htmlFor="email">Email</Label>
-                                <Input
+                {/* Login Card Wrapper */}
+                <div className="w-full max-w-sm bg-white shadow-md rounded-sm overflow-hidden">
+                    {/* Header */}
+                    <div className="py-8 px-6 text-center border-b border-grey-lighter">
+                        <h2 className="text-black font-bold text-lg tracking-wide uppercase">
+                            Welcome Back!
+                        </h2>
+                    </div>
+
+                    {/* Form */}
+                    <div className="p-8 bg-white">
+                        <form action={handleLogin}>
+                            <div className="mb-6">
+                                <label className="block text-grey-darker text-sm font-bold mb-2 sr-only" htmlFor="email">
+                                    E-Mail
+                                </label>
+                                <input
+                                    className="appearance-none border border-grey-light rounded-sm w-full py-3 px-4 text-grey-darker leading-tight focus:outline-none focus:border-grey"
                                     id="email"
                                     name="email"
                                     type="email"
-                                    placeholder="seu@email.com"
+                                    placeholder="E-Mail"
                                     required
                                 />
                             </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="password">Senha</Label>
-                                <Input
+                            <div className="mb-6">
+                                <label className="block text-grey-darker text-sm font-bold mb-2 sr-only" htmlFor="password">
+                                    Password
+                                </label>
+                                <input
+                                    className="appearance-none border border-grey-light rounded-sm w-full py-3 px-4 text-grey-darker leading-tight focus:outline-none focus:border-grey"
                                     id="password"
                                     name="password"
                                     type="password"
+                                    placeholder="******************"
                                     required
                                 />
                             </div>
 
-                            {/* Área de Erro (Só aparece se errar a senha) */}
+                            {/* Error Message */}
                             {error && (
-                                <div className="text-sm text-red-500 font-medium text-center bg-red-50 p-2 rounded border border-red-100">
+                                <div className="mb-4 text-center text-red-500 text-sm">
                                     {error}
                                 </div>
                             )}
 
-                            <Button type="submit" className="w-full" disabled={loading}>
-                                {loading ? 'Entrando...' : 'Entrar'}
-                            </Button>
+                            {/* Button */}
+                            <div className="flex items-center justify-between">
+                                <button
+                                    className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-sm focus:outline-none focus:shadow-outline uppercase tracking-wider transition-colors duration-200"
+                                    type="submit"
+                                    disabled={loading}
+                                >
+                                    {loading ? 'Logging in...' : 'Login'}
+                                </button>
+                            </div>
                         </form>
-                    </CardContent>
-                    <CardFooter className="justify-center">
-                        <p className="text-xs text-muted-foreground">
-                            Protegido por PCP Suporte Rei
-                        </p>
-                    </CardFooter>
-                </Card>
+                    </div>
+                </div>
+
+                {/* Footer Links */}
+                <div className="w-full max-w-sm flex justify-between mt-6 text-sm">
+                    <a href="#" className="text-primary hover:text-primary-dark font-semibold no-underline">
+                        Don't have an account?
+                    </a>
+                    <a href="#" className="text-grey-darker hover:text-grey-dark no-underline">
+                        Forgot Password?
+                    </a>
+                </div>
             </div>
         </div>
     );

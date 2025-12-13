@@ -10,6 +10,18 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
+                black: '#2B4964',
+                'grey-darkest': '#626471',
+                'grey-darker': '#878c98',
+                'grey-dark': '#adb4c2',
+                'grey': '#d5d9e3',
+                'grey-light': '#dee1e8',
+                'grey-lighter': '#eaebef',
+                'grey-lightest': '#fcfcfc',
+                white: '#ffffff',
+                'primary-dark': '#266299',
+
+                // Existing shadcn variables mapped where possible or kept for compatibility
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
                 card: {
@@ -21,7 +33,7 @@ const config: Config = {
                     foreground: 'hsl(var(--popover-foreground))'
                 },
                 primary: {
-                    DEFAULT: 'hsl(var(--primary))',
+                    DEFAULT: '#2b79c1', // PingPing Primary
                     foreground: 'hsl(var(--primary-foreground))'
                 },
                 secondary: {
@@ -49,13 +61,24 @@ const config: Config = {
                     '3': 'hsl(var(--chart-3))',
                     '4': 'hsl(var(--chart-4))',
                     '5': 'hsl(var(--chart-5))'
-                }
+                },
             },
             borderRadius: {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
                 sm: 'calc(var(--radius) - 4px)'
-            }
+            },
+            spacing: {
+                '10': '2.5rem',
+            },
+            letterSpacing: {
+                wide: '0.03em',
+                wider: '0.06em',
+                widest: '0.1em',
+            },
+            fontFamily: {
+                sans: ['var(--font-lato)', 'sans-serif'],
+            },
         }
     },
     plugins: [require("tailwindcss-animate")],
