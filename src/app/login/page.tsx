@@ -27,7 +27,7 @@ export default function LoginPage() {
             setError(error.message);
             setLoading(false);
         } else {
-            router.push('/');
+            router.push('/portal');
             router.refresh();
         }
     }
@@ -38,16 +38,16 @@ export default function LoginPage() {
 
             <div className="container mx-auto p-8 flex flex-col items-center justify-center min-h-screen">
                 {/* Logo Section */}
-                <div className="mb-8" style={{ maxWidth: '12rem' }}>
+                <div className="mb-8">
                     <Logo />
                 </div>
 
                 {/* Login Card Wrapper */}
-                <div className="w-full max-w-sm bg-white shadow-md rounded-sm overflow-hidden">
+                <div className="w-full max-w-sm bg-white shadow-md rounded-lg overflow-hidden">
                     {/* Header */}
                     <div className="py-8 px-6 text-center border-b border-grey-lighter">
-                        <h2 className="text-black font-bold text-lg tracking-wide uppercase">
-                            Welcome Back!
+                        <h2 className="text-black font-extrabold text-2xl tracking-wide uppercase">
+                            BEM-VINDO!
                         </h2>
                     </div>
 
@@ -103,6 +103,9 @@ export default function LoginPage() {
                 </div>
 
 
+            </div>
+            <div className="absolute bottom-4 right-4 text-xs text-grey-darker opacity-60 font-medium">
+                Powered by PCP
             </div>
         </div>
     );
