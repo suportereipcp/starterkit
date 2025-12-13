@@ -103,15 +103,7 @@ export default function LoginPage() {
                     </div>
                 </div>
 
-                {/* Footer Links */}
-                <div className="w-full max-w-sm flex justify-between mt-6 text-sm">
-                    <a href="#" className="text-primary hover:text-primary-dark font-semibold no-underline">
-                        Don't have an account?
-                    </a>
-                    <a href="#" className="text-grey-darker hover:text-grey-dark no-underline">
-                        Forgot Password?
-                    </a>
-                </div>
+
             </div>
         </div>
     );
