@@ -34,8 +34,7 @@ export default function LoginPage() {
 
     return (
         <div className="min-h-screen bg-grey-lighter font-sans text-grey-darkest antialiased relative">
-            {/* Top Colored Bar */}
-            <div className="h-2 bg-primary w-full absolute top-0 left-0"></div>
+
 
             <div className="container mx-auto p-8 flex flex-col items-center justify-center min-h-screen">
                 {/* Logo Section */}
@@ -57,14 +56,14 @@ export default function LoginPage() {
                         <form action={handleLogin}>
                             <div className="mb-6">
                                 <label className="block text-grey-darker text-sm font-bold mb-2 sr-only" htmlFor="email">
-                                    E-Mail
+                                    Usuário
                                 </label>
                                 <input
                                     className="appearance-none border border-grey-light rounded-sm w-full py-3 px-4 text-grey-darker leading-tight focus:outline-none focus:border-grey"
                                     id="email"
                                     name="email"
-                                    type="email"
-                                    placeholder="E-Mail"
+                                    type="text"
+                                    placeholder="Usuário"
                                     required
                                 />
                             </div>
@@ -96,7 +95,7 @@ export default function LoginPage() {
                                     type="submit"
                                     disabled={loading}
                                 >
-                                    {loading ? 'Logging in...' : 'Login'}
+                                    {loading ? 'Entrando...' : 'ENTRAR'}
                                 </button>
                             </div>
                         </form>

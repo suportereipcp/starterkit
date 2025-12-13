@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google"; // Import Lato
+import { Inter } from "next/font/google"; // Import Inter
 import "./globals.css";
 
-// Configure Lato font
-const lato = Lato({
-  weight: ['300', '400', '700', '900'],
+// Configure Inter font
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-lato',
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -23,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${lato.variable} font-sans antialiased`}
+        className={`${inter.variable} font-sans antialiased`}
       >
         {children}
       </body>

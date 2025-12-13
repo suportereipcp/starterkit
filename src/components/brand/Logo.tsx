@@ -11,7 +11,7 @@ export function Logo({ className }: { className?: string }) {
             </div>
             {/* Text */}
             <span className="text-4xl font-bold tracking-tight text-[#2B4964] font-sans">
-                PingPing
+                Nome do Saas
             </span>
         </div>
     );
